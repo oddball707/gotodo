@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package todo.proto;
+
+service TodoService {
+    rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {}    
+    rpc ReadTask(ReadTaskRequest) returns (ReadTaskResponse) {}    
+    rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse) {}
+    rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse) {}
+    rpc ListTasks(ListTasksRequest) returns (ListTasksResponse) {}
+}
+
+message Task {
+    string id = 1;
+    string text = 2;
+    bool completed = 3;
+}
+
+message CreateTaskRequest {
+	Task task = 1;
+}
+
+message CreateTaskResponse {
+	string id = 1;
+}
+
+message ReadTaskRequest {
+	string id = 1;
+}
+
+message ReadTaskResponse {
+	Task task = 1;
+}
+
+message UpdateTaskRequest {
+	Task task = 1;
+}
+
+message UpdateTaskResponse {
+	Task task = 1;
+}
+
+message DeleteTaskRequest {
+	string id = 1;
+}
+
+message DeleteTaskResponse {
+}
+
+message ListTasksRequest {
+}
+
+message ListTasksResponse {
+	repeated Task task = 1;
+}
