@@ -17,7 +17,7 @@ mocks:
 .PHONY: proto
 proto:
 	docker run --rm -v$(PROTO_PATH):$(PROTO_PATH) -w$(PROTO_PATH) jaegertracing/protobuf:latest --proto_path=$(PROTO_PATH) \
-    --go_out=$(PROTO_PATH) -I/usr/include/github.com/gogo/protobuf $(PROTO_PATH)/todo.proto
+    --go_out=$(PROTO_PATH),plugins=grpc:. -I/usr/include/github.com/gogo/protobuf $(PROTO_PATH)/todo.proto
 # 	docker build -t protogen ./proto
 # 	docker run --name protogen protogen
 # 	docker cp protogen:/bin/todo.pb.go ./proto
